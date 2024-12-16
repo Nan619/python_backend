@@ -68,7 +68,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--label_file",
         type=str,
-        default="./model_repository/resnet50_trt/labels.txt",
+        default="./model_repository/resnet50_onnx/labels.txt",
         help="Path to the file with text representation of available labels",
     )
     args = parser.parse_args()
@@ -100,7 +100,4 @@ if __name__ == "__main__":
     )
 
     output0_data = results.as_numpy(output_name)
-    print(output0_data)
-    maxs = np.argmax(output0_data, axis=1)
-    print(maxs)
-    print("Result is class: {}".format(labels_dict[maxs[0]]))
+    print("Result is class: {}".format(labels_dict[output0_data[0]]))
